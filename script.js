@@ -25,8 +25,21 @@ window.addEventListener('load', function () {
     clearMessagesTimeout: 3
   });
 
-  document.getElementById('openChatButton').addEventListener('click', function () {
+  // Espera o launcher renderizar no DOM
+  function waitForLauncher(callback) {
     var launcher = document.querySelector('.f9-launcher-button');
-    if (launcher) launcher.click();
+    if (launcher) {
+      callback(launcher);
+    } else {
+      setTimeout(function () {
+        waitForLauncher(callback);
+      }, 300);
+    }
+  }
+
+  document.getElementById('openChatButton').addEventListener('click', function () {
+    waitForLauncher(function (launcher) {
+      launcher.click();
+    });
   });
 });
