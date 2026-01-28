@@ -1,0 +1,82 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; color: #333; }
+
+/* HEADER */
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 32px;
+  background: #0a2f5f;
+}
+.header-main .logo { height: 50px; }
+.nav-main a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* HERO */
+.hero-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: #edf2f7;
+}
+.hero-section h1 { font-size: 32px; color: #0a2f5f; }
+.hero-section p { font-size: 18px; margin-top: 8px; }
+
+/* ABOUT */
+.section-about {
+  padding: 50px 20px;
+  text-align: center;
+}
+.section-about h2 { font-size: 28px; margin-bottom: 8px; color: #0a2f5f; }
+
+/* SERVICES */
+.section-services {
+  padding: 50px 20px;
+  background: #f7f9fc;
+  text-align: center;
+}
+.services-cards {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.card {
+  background: #fff;
+  padding: 18px;
+  width: 250px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.12);
+}
+.card h3 { color: #0a2f5f; margin-bottom: 6px; }
+
+/* FOOTER */
+.footer-main {
+  background: #0a2f5f;
+  color: #fff;
+  padding: 24px 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* CHAT BUTTON */
+#openChatButton {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  background: #9c00ff;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 22px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.15);
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 9999;
+}
+#openChatButton:hover { transform: scale(1.05); }
