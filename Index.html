@@ -1,107 +1,128 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Five9 Chat – Embed</title>
-  <style>
-    html, body { height: 100%; margin: 0; }
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-    .wrap {
-      min-height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
-    }
-    .hint { color: #555; max-width: 640px; }
-    .cta {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      border: 0;
-      border-radius: 999px;
-      padding: 12px 18px;
-      font-size: 16px;
-      cursor: pointer;
-      background: #9c00ff;
-      color: #fff;
-      box-shadow: 0 6px 18px rgba(0,0,0,.18);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demonstração de Atendimento - MakeOne</title>
+    <style>
+        /* Estilo Visual da Página (Cores da MakeOne) */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Evita barras de rolagem desnecessárias */
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .logo {
+            max-width: 250px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .aviso {
+            font-size: 12px;
+            color: #999;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+
+        /* Ajustes para o Chat Flutuante ficar sempre visível */
+        .f9-wrapper {
+            z-index: 99999 !important;
+        }
+    </style>
 </head>
 <body>
-  <div class="wrap">
-    <p class="hint">Clique no balão de chat no canto para iniciar.<br/>Se não aparecer, use o botão abaixo.</p>
-  </div>
-  <button id="openChat" class="cta">💬 Abrir chat</button>
 
-  <!-- Five9 Chat Widget -->
-  <script src="https://cdn.prod.us.five9.net/static/stable/chat/wrapper/index.js"></script>
-  <script>
-    window.addEventListener('load', function () {
-      if (!(window.F9 && F9.Chat && F9.Chat.Wrapper)) {
-        console.error('Five9 Wrapper não carregou.');
-        return;
-      }
+    <div class="container">
+        <img src="https://makeone.com.br/wp-content/uploads/2023/12/makeone-hAsset-1.png" alt="Logo MakeOne" class="logo">
+        
+        <h1>Novo Canal de Atendimento Inteligente</h1>
+        <p>Esta é uma página de demonstração do ambiente de homologação.<br>
+        Utilize o botão de chat no canto inferior direito para testar a integração com a plataforma <strong>Five9</strong>.</p>
+        
+        <div class="aviso">Ambiente de Teste Controlado - MakeOne © 2026</div>
+    </div>
 
-      F9.Chat.Wrapper.init({
-        cdn: 'prod',
-        useBusinessHours: false,
-        languages: { enabled: false, backgroundColor: '#9c00ff' },
-        l10n: {
-          en: {
-            messenger: { customText: {} },
-            systemMessages: {
-              transferredToParticipant: 'The chat has been transferred to {name}.',
-              transferredToGroup: 'That chat has been transferred to group {group}.'
-            },
-            captureFields: [
-              { k: 'name', l: 'Nome', p: 'Entre com seu nome' },
-              { k: 'email', l: 'Email', p: 'Seu email' },
-              { k: 'Question', l: 'Faça uma pergunta', p: '' }
-            ]
-          }
-        },
-        prepopulatedFields: [ { k: 'campaign', v: 'Inbound_makeone' } ],
-        messenger: {
-          integrationId: '915e768c-c863-40e7-9831-b41ea72936cd',
-          soundNotificationEnabled: true,
-          transcriptPrintingEnabled: false,
-          menuItems: { imageUpload: true, fileUpload: true, shareLocation: true },
-          embedded: false,
-          setViewportScale: false,
-          businessName: 'Five9 By MakeOne',
-          businessIconUrl: 'https://makeone.com.br/wp-content/uploads/2023/12/Camada_1.png',
-          browserStorage: 'localStorage',
-          browserLogLevel: { info: true, debug: true, error: true },
-          hideWidgetAfterBusinessHours: false,
-          openLinkInSameTab: false,
-          scheduleCallback: {
-            isCallbackEnabled: false,
-            requestCallbackList: '',
-            customConfirmationMessage: 'We will call you as soon as we can at [PHONE]',
-            web2CampaignAPIHost: ''
-          },
-          fixedHeader: false,
-          displayStyle: 'button',
-          customColors: {
-            brandColor: '#9c00ff',
-            conversationColor: '#9a00ff',
-            actionColor: '#00c3ff'
-          },
-          carouselType: 'default'
-        },
-        clearMessagesTimeout: 3
-      });
+    <script src="https://cdn.prod.us.five9.net/static/stable/chat/wrapper/index.js"></script>
+    <script>
+        window.addEventListener('load', function () {
+            if (window.F9 && F9.Chat && F9.Chat.Wrapper) {
+                F9.Chat.Wrapper.init({
+                    cdn: 'prod',
+                    useBusinessHours: false,
+                    languages: { enabled: false, backgroundColor: '#9c00ff' },
+                    l10n: {
+                        en: {
+                            messenger: { customText: {} },
+                            systemMessages: {
+                                transferredToParticipant: 'O chat foi transferido para {name}.',
+                                transferredToGroup: 'O chat foi transferido para o grupo {group}.'
+                            },
+                            captureFields: [
+                                { k: 'name', l: 'Nome', p: 'Digite seu nome' },
+                                { k: 'email', l: 'Email', p: 'Seu melhor e-mail' },
+                                { k: 'Question', l: 'Como podemos ajudar?', p: '' }
+                            ]
+                        }
+                    },
+                    prepopulatedFields: [ { k: 'campaign', v: 'Inbound_makeone' } ],
+                    messenger: {
+                        integrationId: '915e768c-c863-40e7-9831-b41ea72936cd',
+                        soundNotificationEnabled: true,
+                        transcriptPrintingEnabled: false,
+                        menuItems: { imageUpload: true, fileUpload: true, shareLocation: true },
+                        embedded: false,
+                        setViewportScale: false,
+                        businessName: 'MakeOne Atendimento',
+                        businessIconUrl: 'https://makeone.com.br/wp-content/uploads/2023/12/Camada_1.png',
+                        browserStorage: 'localStorage',
+                        browserLogLevel: { info: true, debug: true, error: true },
+                        hideWidgetAfterBusinessHours: false,
+                        openLinkInSameTab: false,
+                        displayStyle: 'button', 
+                        customColors: {
+                            brandColor: '#59398C', /* Cor Roxo MakeOne */
+                            conversationColor: '#59398C',
+                            actionColor: '#00c3ff'
+                        },
+                        carouselType: 'default'
+                    },
+                    clearMessagesTimeout: 3
+                });
+            } else {
+                console.error('Five9 Wrapper não carregou.');
+            }
+        });
+    </script>
 
-      // Botão de fallback para abrir o launcher interno
-      document.getElementById('openChat').addEventListener('click', function () {
-        var launcher = document.querySelector('.f9-launcher-button');
-        if (launcher) launcher.click();
-      });
-    });
-  </script>
 </body>
 </html>
