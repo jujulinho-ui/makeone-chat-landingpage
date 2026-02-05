@@ -3,63 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demonstração de Atendimento - MakeOne</title>
+    <title>MakeOne - Inteligência Viva</title>
     <style>
         /* =========================================
-           ESTILO GERAL DA PÁGINA
+           ESTILO DE SITE REAL (Full Width)
            ========================================= */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff; /* Fundo branco padrão */
+            overflow-x: hidden; /* Evita rolagem lateral indesejada */
         }
 
-        .container {
-            background: white;
-            padding: 0; /* Sem margem interna para a imagem ocupar tudo */
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            max-width: 1000px; /* Largura máxima do banner */
-            width: 95%;
-            overflow: hidden; /* Garante bordas arredondadas na imagem */
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        /* O container agora ocupa 100% da tela */
+        .site-header {
+            width: 100%;
+            display: block;
+            border-bottom: 1px solid #eaeaea; /* Linha sutil abaixo do header para realismo */
         }
 
-        /* Classe para a imagem do banner */
+        /* A imagem estica para caber na tela inteira */
         .hero-image {
             width: 100%;
             height: auto;
             display: block;
+            object-fit: cover; /* Garante que a imagem cubra bem a área */
         }
 
         /* =========================================
            ESTILO DO CHAT (FIVE9)
            ========================================= */
         
-        /* Garante que o chat fique acima de tudo */
         .f9-wrapper {
             z-index: 99999 !important;
         }
 
-        /* FORÇAR AUMENTO DA JANELA DO CHAT */
+        /* Janela do chat grande */
         iframe[title="Five9 Chat"] {
-            width: 450px !important;  /* Mais largo */
-            height: 650px !important; /* Mais alto */
+            width: 450px !important;
+            height: 650px !important;
             max-height: 90vh !important;
-            box-shadow: 0 12px 24px rgba(0,0,0,0.3) !important;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3) !important;
             border-radius: 12px !important;
         }
 
-        /* Ajuste para celular (Mobile Responsivo) */
+        /* Responsividade para celular */
         @media (max-width: 480px) {
             iframe[title="Five9 Chat"] {
                 width: 100% !important;
@@ -73,8 +62,8 @@
 </head>
 <body>
 
-    <div class="container">
-        <img src="assets/image_cf721f.jpg" alt="Banner MakeOne Chatbot" class="hero-image">
+    <div class="site-header">
+        <img src="assets/image_cf721f.jpg" alt="Site MakeOne" class="hero-image">
     </div>
 
     <script src="https://cdn.prod.us.five9.net/static/stable/chat/wrapper/index.js"></script>
@@ -84,7 +73,6 @@
                 F9.Chat.Wrapper.init({
                     cdn: 'prod',
                     useBusinessHours: false,
-                    // Cor de fundo do loader
                     languages: { enabled: false, backgroundColor: '#9c00ff' },
                     l10n: {
                         en: {
@@ -116,12 +104,12 @@
                         openLinkInSameTab: false,
                         displayStyle: 'button', 
                         
-                        /* --- CORES PERSONALIZADAS (ROXO E BRANCO) --- */
+                        /* CORES: Roxo e Branco */
                         customColors: {
-                            brandColor: '#9c00ff',        /* Fundo do topo e botão flutuante (Roxo) */
-                            conversationColor: '#9c00ff', /* Balões de mensagem do atendente (Roxo) */
-                            actionColor: '#9c00ff',       /* Botões de enviar/ação (Roxo para destacar no fundo branco) */
-                            textColor: '#ffffff'          /* Texto do cabeçalho (Branco) */
+                            brandColor: '#9c00ff',
+                            conversationColor: '#9c00ff',
+                            actionColor: '#9c00ff',
+                            textColor: '#ffffff'
                         },
                         carouselType: 'default'
                     },
