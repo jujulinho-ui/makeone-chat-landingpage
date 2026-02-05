@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demonstração de Atendimento - MakeOne</title>
     <style>
-        /* Estilo Visual da Página */
+        /* =========================================
+           ESTILO GERAL DA PÁGINA
+           ========================================= */
         body {
             margin: 0;
             padding: 0;
@@ -20,40 +22,44 @@
         }
 
         .container {
-            /* Removi o padding e aumentei a largura para caber a imagem inteira */
             background: white;
-            padding: 0; 
+            padding: 0; /* Sem margem interna para a imagem ocupar tudo */
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            max-width: 1000px; /* Largura maior para a imagem */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            max-width: 1000px; /* Largura máxima do banner */
             width: 95%;
-            overflow: hidden; /* Garante que a imagem não saia das bordas arredondadas */
+            overflow: hidden; /* Garante bordas arredondadas na imagem */
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Classe para a sua nova imagem */
+        /* Classe para a imagem do banner */
         .hero-image {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* Ajustes para o Chat Flutuante */
+        /* =========================================
+           ESTILO DO CHAT (FIVE9)
+           ========================================= */
+        
+        /* Garante que o chat fique acima de tudo */
         .f9-wrapper {
             z-index: 99999 !important;
         }
 
         /* FORÇAR AUMENTO DA JANELA DO CHAT */
         iframe[title="Five9 Chat"] {
-            width: 450px !important;
-            height: 650px !important;
+            width: 450px !important;  /* Mais largo */
+            height: 650px !important; /* Mais alto */
             max-height: 90vh !important;
             box-shadow: 0 12px 24px rgba(0,0,0,0.3) !important;
             border-radius: 12px !important;
         }
 
+        /* Ajuste para celular (Mobile Responsivo) */
         @media (max-width: 480px) {
             iframe[title="Five9 Chat"] {
                 width: 100% !important;
@@ -68,7 +74,7 @@
 <body>
 
     <div class="container">
-        <img src="image_cf721f.jpg" alt="Banner MakeOne" class="hero-image">
+        <img src="assets/image_cf721f.jpg" alt="Banner MakeOne Chatbot" class="hero-image">
     </div>
 
     <script src="https://cdn.prod.us.five9.net/static/stable/chat/wrapper/index.js"></script>
@@ -78,6 +84,7 @@
                 F9.Chat.Wrapper.init({
                     cdn: 'prod',
                     useBusinessHours: false,
+                    // Cor de fundo do loader
                     languages: { enabled: false, backgroundColor: '#9c00ff' },
                     l10n: {
                         en: {
@@ -108,10 +115,13 @@
                         hideWidgetAfterBusinessHours: false,
                         openLinkInSameTab: false,
                         displayStyle: 'button', 
+                        
+                        /* --- CORES PERSONALIZADAS (ROXO E BRANCO) --- */
                         customColors: {
-                            brandColor: '#59398C',
-                            conversationColor: '#59398C',
-                            actionColor: '#00c3ff'
+                            brandColor: '#9c00ff',        /* Fundo do topo e botão flutuante (Roxo) */
+                            conversationColor: '#9c00ff', /* Balões de mensagem do atendente (Roxo) */
+                            actionColor: '#9c00ff',       /* Botões de enviar/ação (Roxo para destacar no fundo branco) */
+                            textColor: '#ffffff'          /* Texto do cabeçalho (Branco) */
                         },
                         carouselType: 'default'
                     },
